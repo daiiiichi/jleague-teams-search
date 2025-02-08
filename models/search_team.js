@@ -17,11 +17,11 @@ export class Teams {
     const userSelectLeague = await terminal.select(
       "league",
       "リーグを選んでください",
-      TeamList.map((l) => l.league),
+      TeamList.map((l) => l.league)
     );
 
     const leagueTeams = TeamList.find(
-      (l) => l.league === userSelectLeague,
+      (l) => l.league === userSelectLeague
     ).team;
     console.log(`${userSelectLeague}のチームは、以下の通りです。`);
     this.display(leagueTeams);
@@ -31,11 +31,11 @@ export class Teams {
     const terminal = new Terminal();
     const userInputPrefecture = await terminal.input(
       "prefecture",
-      "都道府県を入力してください 例）東京都",
+      "都道府県を入力してください 例）東京、大阪"
     );
 
-    const prefectureTeams = TeamList.flatMap((l) => l.team).filter(
-      (team) => team.prefecture === userInputPrefecture,
+    const prefectureTeams = TeamList.flatMap((l) => l.team).filter((team) =>
+      team.prefecture.startsWith(userInputPrefecture)
     );
     console.log(`${userInputPrefecture}のチームは、以下の通りです。`);
     this.display(prefectureTeams);
