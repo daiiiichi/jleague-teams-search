@@ -5,7 +5,7 @@ import { Terminal } from "./terminal.js";
 export class TeamDatabase {
   constructor() {
     this.teams = TeamList.flatMap((l) => l.team).map(
-      (team) => new Team(team.club_name, team.prefecture)
+      (team) => new Team(team.club_name, team.prefecture),
     );
   }
 
@@ -24,11 +24,11 @@ export class TeamDatabase {
     const userSelectLeague = await terminal.select(
       "league",
       "リーグを選んでください",
-      TeamList.map((l) => l.league)
+      TeamList.map((l) => l.league),
     );
 
     const leagueTeams = TeamList.find(
-      (l) => l.league === userSelectLeague
+      (l) => l.league === userSelectLeague,
     ).team.map((team) => new Team(team.club_name, team.prefecture));
 
     console.log(`${userSelectLeague}のチームは、以下の通りです。`);
@@ -39,11 +39,11 @@ export class TeamDatabase {
     const terminal = new Terminal();
     const userInputPrefecture = await terminal.input(
       "prefecture",
-      "都道府県を入力してください 例）東京、大阪"
+      "都道府県を入力してください 例）東京、大阪",
     );
 
     const prefectureTeams = this.teams.filter((team) =>
-      team.prefecture.startsWith(userInputPrefecture)
+      team.prefecture.startsWith(userInputPrefecture),
     );
 
     console.log(`${userInputPrefecture}のチームは、以下の通りです。`);

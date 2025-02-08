@@ -10,7 +10,7 @@ async function main() {
   const userSelect = await terminal.select(
     "searchMethod",
     "検索方法を選んでください",
-    ["リーグで検索", "都道府県で検索"]
+    ["リーグで検索", "都道府県で検索"],
   );
 
   if (userSelect === "リーグで検索") {
