@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
-import { Teams } from "./models/search_team.js";
-import { Terminal } from "./models/terminal_operation.js";
+import { TeamDatabase } from "./models/teamDatabase.js";
+import { Terminal } from "./models/terminal.js";
 
 async function main() {
   const terminal = new Terminal();
-  const teams = new Teams();
+  const teams = new TeamDatabase();
 
   const userSelect = await terminal.select(
     "searchMethod",
     "検索方法を選んでください",
-    ["リーグで検索", "都道府県で検索"],
+    ["リーグで検索", "都道府県で検索"]
   );
 
   if (userSelect === "リーグで検索") {
