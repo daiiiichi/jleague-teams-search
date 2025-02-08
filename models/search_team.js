@@ -1,13 +1,20 @@
+import { Team } from "./team.js";
 import TeamList from "../data/team_list.js";
 import { Terminal } from "./terminal_operation.js";
 
-export class Teams {
+export class TeamDatabase {
+  constructor() {
+    this.teams = TeamList.flatMap((l) => l.team).map(
+      (team) => new Team(team.club_name, team.prefecture)
+    );
+  }
+
   display(teams) {
     if (teams.length === 0) {
       console.log("該当するチームはありません");
     } else {
       teams.forEach((team) => {
-        console.log(`- ${team.club_name} (${team.prefecture})`);
+        console.log(team.display());
       });
     }
   }
@@ -22,7 +29,8 @@ export class Teams {
 
     const leagueTeams = TeamList.find(
       (l) => l.league === userSelectLeague
-    ).team;
+    ).team.map((team) => new Team(team.club_name, team.prefecture));
+
     console.log(`${userSelectLeague}のチームは、以下の通りです。`);
     this.display(leagueTeams);
   }
@@ -34,9 +42,10 @@ export class Teams {
       "都道府県を入力してください 例）東京、大阪"
     );
 
-    const prefectureTeams = TeamList.flatMap((l) => l.team).filter((team) =>
+    const prefectureTeams = this.teams.filter((team) =>
       team.prefecture.startsWith(userInputPrefecture)
     );
+
     console.log(`${userInputPrefecture}のチームは、以下の通りです。`);
     this.display(prefectureTeams);
   }
