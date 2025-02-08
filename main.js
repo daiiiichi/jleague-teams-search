@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { TeamDatabase } from "./models/search_team.js";
-import { Terminal } from "./models/terminal_operation.js";
+import { TeamDatabase } from "./models/teamDatabase.js";
+import { Terminal } from "./models/terminal.js";
 
 async function main() {
   const terminal = new Terminal();

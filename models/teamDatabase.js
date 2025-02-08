@@ -1,6 +1,6 @@
 import { Team } from "./team.js";
 import TeamList from "../data/team_list.js";
-import { Terminal } from "./terminal_operation.js";
+import { Terminal } from "./terminal.js";
 
 export class TeamDatabase {
   constructor() {
